@@ -1,5 +1,13 @@
 use azure_search_rs::client::AzureSearchClient;
+use serde::{Deserialize, Serialize};
 use std::env;
+
+#[derive(Debug, Serialize, Deserialize)]
+struct Hotel {
+    id: String,
+    description_vector: Vec<f32>,
+    description: String,
+}
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -18,7 +26,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let document_id = "1";
 
     // 3. 獲取文件
-    let document = client.get_document(&index_name, document_id).await?;
+    let document: Hotel = client.get_document(&index_name, document_id).await?;
 
     // 4. 輸出結果
     println!("獲取到的文件內容:");

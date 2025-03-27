@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use crate::models::Suggester;
+use serde::{Deserialize, Serialize};
 
 /// Azure Search index definition
 #[derive(Debug, Serialize, Deserialize, Clone)]

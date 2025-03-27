@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "lowercase")]
 pub enum QueryType {
     /// simple
     Simple,
@@ -9,6 +10,7 @@ pub enum QueryType {
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "lowercase")]
 pub enum SearchMode {
     /// any
     Any,
@@ -58,6 +60,7 @@ pub struct SearchRequest {
     pub minimum_coverage: Option<u8>,
     /// highlight fields
     #[serde(skip_serializing_if = "Option::is_none")]
+    #[serde(serialize_with = "serialize_option_vec_as_string")]
     pub highlight: Option<Vec<String>>,
     /// Highlight pre/post tags
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -136,7 +139,10 @@ where
 }
 
 /// Serialize a option vector as a string
-fn serialize_option_vec_as_string<S>(vec: &Option<Vec<String>>, serializer: S) -> Result<S::Ok, S::Error>
+fn serialize_option_vec_as_string<S>(
+    vec: &Option<Vec<String>>,
+    serializer: S,
+) -> Result<S::Ok, S::Error>
 where
     S: serde::Serializer,
 {
