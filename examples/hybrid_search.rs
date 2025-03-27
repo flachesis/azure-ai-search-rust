@@ -14,10 +14,11 @@ struct Hotel {
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
     let service_name = std::env::var("AZURE_SEARCH_SERVICE_NAME")?;
+    let endpoint = format!("https://{}.search.windows.net", service_name);
     let index_name = std::env::var("AZURE_SEARCH_INDEX_NAME")?;
     let api_key = std::env::var("AZURE_SEARCH_API_KEY")?;
 
-    let client = AzureSearchClient::new(service_name, api_key, "2024-07-01").unwrap();
+    let client = AzureSearchClient::new(endpoint, api_key, "2024-07-01").unwrap();
 
     // Create a text query that will be vectorized server-side
     let text_query = "luxury hotel with ocean view";

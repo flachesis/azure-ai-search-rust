@@ -13,6 +13,7 @@ pub struct Suggester {
 
 /// Parameters for suggest operation
 #[derive(Debug, Serialize, Deserialize, Clone)]
+#[serde(rename_all = "camelCase")]
 pub struct SuggestParameters {
     /// The search text
     pub search: String,

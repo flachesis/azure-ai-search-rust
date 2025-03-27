@@ -69,15 +69,3 @@ impl AzureSearchClient {
         .await
     }
 }
-
-impl Default for SearchRequest {
-    fn default() -> Self {
-        Self {
-            search: None,
-            filter: None,
-            facets: Vec::new(),
-            vector_queries: None,
-            semantic_configuration: None,
-        }
-    }
-}
