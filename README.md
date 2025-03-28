@@ -23,7 +23,7 @@ azure-ai-search = { git = "https://github.com/flachesis/azure-ai-search-rust" }
 See the [examples](./examples) directory for usage examples:
 
 - [Hybrid Search](./examples/hybrid_search.rs)
-- [Put Document](.examples/put_document.rs)
+- [Put Document](./examples/put_document.rs)
 - [Vector Search](./examples/vector_search.rs)
 
 ## License
