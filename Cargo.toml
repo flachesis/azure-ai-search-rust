@@ -1,11 +1,11 @@
 [package]
 name = "azure_search_rs"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Azure AI Search client library for Rust"
 authors = ["Michael Yang <github@flachesis.org>"]
 license = "MIT"
-repository = "https://github.com/flachesis/azure-ai-search-rs"
+repository = "https://github.com/flachesis/azure-ai-search-rust"
 
 [[example]]
 name = "hybrid_search"
