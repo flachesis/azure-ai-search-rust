@@ -37,5 +37,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     client.put_documents(&index_name, documents).await?;
 
     println!("Documents uploaded successfully");
+
+    //get documents
+    let document: Hotel = client
+        .get_document(&index_name, "1")
+        .await?;
+
+    println!("Document retrieved: {:?}", document);
     Ok(())
 }
