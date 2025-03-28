@@ -18,7 +18,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let api_key = env::var("AZURE_SEARCH_API_KEY")
         .expect("AZURE_SEARCH_API_KEY environment variable not set");
     // 1. 建立AzureSearchClient
-    let client = AzureSearchClient::new(endpoint, api_key, "2024-07-01".to_string())?;
+    let client = AzureSearchClient::new(endpoint, api_key, "2024-07-01".to_string(), None)?;
 
     // 2. 指定index名稱和document ID
     let index_name = env::var("AZURE_SEARCH_INDEX_NAME")

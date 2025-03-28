@@ -17,7 +17,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let index_name = std::env::var("AZURE_SEARCH_INDEX_NAME")?;
     let api_key = std::env::var("AZURE_SEARCH_API_KEY")?;
 
-    let client = AzureSearchClient::new(&endpoint, &api_key, "2024-07-01")?;
+    let client = AzureSearchClient::new(&endpoint, &api_key, "2024-07-01", None)?;
 
     // 準備測試文檔
     let documents = vec![

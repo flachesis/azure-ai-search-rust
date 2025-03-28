@@ -22,13 +22,14 @@ impl AzureSearchClient {
         endpoint: impl Into<String>,
         api_key: impl Into<String>,
         api_version: impl Into<String>,
+        http_client: Option<Client>,
     ) -> Result<Self> {
         let endpoint = Url::parse(&endpoint.into())?;
         Ok(Self {
             endpoint,
             api_version: api_version.into(),
             api_key: api_key.into(),
-            http_client: Client::new(),
+            http_client: http_client.unwrap_or_else(Client::new),
         })
     }
 

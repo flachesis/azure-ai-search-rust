@@ -12,8 +12,6 @@ impl AzureSearchClient {
         request: &SearchRequest,
     ) -> Result<SearchResponse<T>> {
         let path = format!("indexes/{}/docs/search", index_name);
-        println!("Requesting path: {}", path);
-        println!("Request body: {}", serde_json::to_string(request).unwrap());
         self.send_request::<SearchResponse<T>, SearchRequest>(
             reqwest::Method::POST,
             &path,

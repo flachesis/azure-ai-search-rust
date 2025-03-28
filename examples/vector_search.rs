@@ -14,7 +14,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Initialize client
     let endpoint = format!("https://{}.search.windows.net", service_name);
     let api_version = "2024-07-01".to_string();
-    let client = AzureSearchClient::new(endpoint, api_key, api_version)?;
+    let client = AzureSearchClient::new(endpoint, api_key, api_version, None)?;
 
     // Example 1: Pure vector search
     let vector_query = VectorKind::VectorQuery {
