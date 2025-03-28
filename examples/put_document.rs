@@ -11,7 +11,7 @@ struct Hotel {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    // 創建client實例
+    // Create client instance
     let service_name = std::env::var("AZURE_SEARCH_SERVICE_NAME")?;
     let endpoint = format!("https://{}.search.windows.net", service_name);
     let index_name = std::env::var("AZURE_SEARCH_INDEX_NAME")?;
@@ -19,7 +19,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let client = AzureSearchClient::new(&endpoint, &api_key, "2024-07-01", None)?;
 
-    // 準備測試文檔
+    // Prepare test documents
     let documents = vec![
         Hotel {
             id: "1".to_string(),
@@ -29,13 +29,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         Hotel {
             id: "2".to_string(),
             description_vector: vec![0.5, 0.6, 0.7, 0.8],
-            description: "經濟型酒店".to_string(),
+            description: "budget hotel".to_string(),
         },
     ];
 
-    // 上傳文檔
+    // Upload documents
     client.put_documents(&index_name, documents).await?;
 
-    println!("文檔上傳成功");
+    println!("Documents uploaded successfully");
     Ok(())
 }
