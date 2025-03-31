@@ -4,9 +4,43 @@ use crate::{
     models::{search::{SearchRequest, SearchResponse, VectorKind}, QueryType},
 };
 
-impl AzureSearchClient {
+pub trait SearchTrait {
     /// Execute a search query against an index
-    pub async fn search<T: serde::de::DeserializeOwned>(
+    fn search<T: serde::de::DeserializeOwned>(
+        &self,
+        index_name: &str,
+        request: &SearchRequest,
+    ) -> impl std::future::Future<Output = Result<SearchResponse<T>>> + Send;
+
+    /// Execute a vector search query
+    fn vector_search<T: serde::de::DeserializeOwned>(
+        &self,
+        index_name: &str,
+        vector_queries: Vec<VectorKind>,
+    ) -> impl std::future::Future<Output = Result<SearchResponse<T>>> + Send;
+
+    /// Execute a semantic search query (optionally with vector search)
+    fn semantic_search<T: serde::de::DeserializeOwned>(
+        &self,
+        index_name: &str,
+        query: &str,
+        semantic_configuration: &str,
+        vector_queries: Option<Vec<VectorKind>>,
+    ) -> impl std::future::Future<Output = Result<SearchResponse<T>>> + Send;
+
+    /// Execute a hybrid search combining semantic and vector search
+    fn hybrid_search<T: serde::de::DeserializeOwned>(
+        &self,
+        index_name: &str,
+        query: &str,
+        semantic_configuration: &str,
+        vector_queries: Vec<VectorKind>,
+    ) -> impl std::future::Future<Output = Result<SearchResponse<T>>> + Send;
+}
+
+impl SearchTrait for AzureSearchClient {
+    /// Execute a search query against an index
+    async fn search<T: serde::de::DeserializeOwned>(
         &self,
         index_name: &str,
         request: &SearchRequest,
@@ -21,7 +55,7 @@ impl AzureSearchClient {
     }
 
     /// Execute a vector search query
-    pub async fn vector_search<T: serde::de::DeserializeOwned>(
+    async fn vector_search<T: serde::de::DeserializeOwned>(
         &self,
         index_name: &str,
         vector_queries: Vec<VectorKind>,
@@ -34,7 +68,7 @@ impl AzureSearchClient {
     }
 
     /// Execute a semantic search query (optionally with vector search)
-    pub async fn semantic_search<T: serde::de::DeserializeOwned>(
+    async fn semantic_search<T: serde::de::DeserializeOwned>(
         &self,
         index_name: &str,
         query: &str,
@@ -52,7 +86,7 @@ impl AzureSearchClient {
     }
 
     /// Execute a hybrid search combining semantic and vector search
-    pub async fn hybrid_search<T: serde::de::DeserializeOwned>(
+    async fn hybrid_search<T: serde::de::DeserializeOwned>(
         &self,
         index_name: &str,
         query: &str,

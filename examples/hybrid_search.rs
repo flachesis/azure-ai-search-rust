@@ -1,4 +1,5 @@
 use azure_search_rs::{
+    operations::search::SearchTrait,
     client::AzureSearchClient,
     models::{QueryType, SearchMode, SearchRequest, SearchResponse, VectorKind},
 };

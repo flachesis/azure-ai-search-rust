@@ -1,4 +1,4 @@
-use azure_search_rs::{client::AzureSearchClient, models::search::VectorKind};
+use azure_search_rs::{client::AzureSearchClient, models::search::VectorKind, operations::search::SearchTrait};
 use std::env;
 
 #[tokio::main]

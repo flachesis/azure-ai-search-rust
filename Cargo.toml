@@ -12,8 +12,12 @@ name = "hybrid_search"
 path = "examples/hybrid_search.rs"
 
 [[example]]
-name = "suggest_example"
-path = "examples/suggest.rs"
+name = "vector_search"
+path = "examples/vector_search.rs"
+
+[[example]]
+name = "get_document"
+path = "examples/get_document.rs"
 
 [[example]]
 name = "put_document"

@@ -1,4 +1,5 @@
 use azure_search_rs::client::AzureSearchClient;
+use azure_search_rs::operations::document::DocumentTrait;
 use serde::{Deserialize, Serialize};
 use std::env;
 
