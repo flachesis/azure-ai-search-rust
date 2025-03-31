@@ -1,7 +1,7 @@
 use azure_search_rs::{
-    operations::search::SearchTrait,
     client::AzureSearchClient,
     models::{QueryType, SearchMode, SearchRequest, SearchResponse, VectorKind},
+    operations::search::SearchTrait,
 };
 use serde::{Deserialize, Serialize};
 

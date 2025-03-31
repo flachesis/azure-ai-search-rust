@@ -1,7 +1,10 @@
 use crate::{
     client::AzureSearchClient,
     error::Result,
-    models::{search::{SearchRequest, SearchResponse, VectorKind}, QueryType},
+    models::{
+        search::{SearchRequest, SearchResponse, VectorKind},
+        QueryType,
+    },
 };
 
 pub trait SearchTrait {

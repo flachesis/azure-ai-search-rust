@@ -4,15 +4,22 @@ use serde_json::json;
 
 pub trait DocumentTrait {
     /// Get a document by ID
-    fn get_document<T>(&self, index_name: &str, document_id: &str) -> impl std::future::Future<Output = Result<T>> + Send
+    fn get_document<T>(
+        &self,
+        index_name: &str,
+        document_id: &str,
+    ) -> impl std::future::Future<Output = Result<T>> + Send
     where
         T: for<'de> Deserialize<'de>;
 
     /// Upload or update documents in an index
-    fn put_documents<T>(&self, index_name: &str, documents: Vec<T>) -> impl std::future::Future<Output = Result<()>> + Send
+    fn put_documents<T>(
+        &self,
+        index_name: &str,
+        documents: Vec<T>,
+    ) -> impl std::future::Future<Output = Result<()>> + Send
     where
         T: Serialize + Send;
-    
 }
 
 impl DocumentTrait for AzureSearchClient {
