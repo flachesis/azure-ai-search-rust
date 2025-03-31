@@ -87,7 +87,7 @@ pub enum VectorKind {
     VectorQuery {
         kind: String,
         vector: Vec<f32>,
-        k: u8,
+        k: u16,
         #[serde(serialize_with = "serialize_vec_as_string")]
         fields: Vec<String>,
     },
@@ -97,7 +97,7 @@ pub enum VectorKind {
         text: String,
         #[serde(serialize_with = "serialize_vec_as_string")]
         fields: Vec<String>,
-        k: u8,
+        k: u16,
     },
 }
 
