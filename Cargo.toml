@@ -1,6 +1,6 @@
 [package]
 name = "azure_search_rs"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 description = "Azure AI Search client library for Rust"
 authors = ["Michael Yang <github@flachesis.org>"]
