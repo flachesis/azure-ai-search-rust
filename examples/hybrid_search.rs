@@ -22,7 +22,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     // Create a text query that will be vectorized server-side
     let text_query = "luxury hotel with ocean view";
-    let semantic_config = "hotel-semantic-config";
+    let semantic_config = "my-semantic-config";
 
     // Create vector queries
     let vector_queries = vec![VectorKind::TextQuery {

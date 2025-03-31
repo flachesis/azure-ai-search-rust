@@ -1,7 +1,7 @@
 use crate::{
     client::AzureSearchClient,
     error::Result,
-    models::search::{SearchRequest, SearchResponse, VectorKind},
+    models::{search::{SearchRequest, SearchResponse, VectorKind}, QueryType},
 };
 
 impl AzureSearchClient {
@@ -45,6 +45,7 @@ impl AzureSearchClient {
             search: Some(query.to_string()),
             semantic_configuration: Some(semantic_configuration.to_string()),
             vector_queries,
+            query_type: Some(QueryType::Semantic),
             ..Default::default()
         };
         self.search(index_name, &request).await

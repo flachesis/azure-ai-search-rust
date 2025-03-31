@@ -7,6 +7,8 @@ pub enum QueryType {
     Simple,
     /// full
     Full,
+    /// semantic
+    Semantic,
 }
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
