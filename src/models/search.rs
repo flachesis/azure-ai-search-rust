@@ -90,14 +90,18 @@ pub enum VectorKind {
         k: u16,
         #[serde(serialize_with = "serialize_vec_as_string")]
         fields: Vec<String>,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        weight: Option<f32>,
     },
     /// Text query that will be vectorized server-side
     TextQuery {
         kind: String,
         text: String,
+        k: u16,
         #[serde(serialize_with = "serialize_vec_as_string")]
         fields: Vec<String>,
-        k: u16,
+        #[serde(skip_serializing_if = "Option::is_none")]
+        weight: Option<f32>,
     },
 }
 

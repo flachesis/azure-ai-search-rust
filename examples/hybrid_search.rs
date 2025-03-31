@@ -30,6 +30,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         text: text_query.to_string(),
         fields: vec!["description_vector".to_string()],
         k: 10,
+        weight: None,
     }
     .into()];
 

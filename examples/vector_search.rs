@@ -22,6 +22,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         vector: vec![0.1, 0.2, 0.3, 0.4], // Example embedding vector
         fields: vec!["description_vector".to_string()],
         k: 5,
+        weight: Some(100.0),
     };
 
     println!("Running pure vector search...");
@@ -36,6 +37,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         text: "luxury hotel with ocean view".to_string(),
         fields: vec!["description_vector".to_string()],
         k: 3,
+        weight: Some(100.0),
     };
 
     println!("\nRunning semantic search with vector...");
